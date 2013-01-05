@@ -3,8 +3,8 @@
 (in-package #:intel-8086-emulator)
 
 (defun main ()
-  (with-open-file (stream "quicklisp/local-projects/intel-8086-emulator/codegolf"
+  (with-open-file (stream "quicklisp/local-projects/intel-8086-emulator/asm/codegolf"
                           :element-type 'unsigned-byte)
     (loop for byte = (read-byte stream nil :eof)
        until (eq byte :eof)
-       do (format t "~X " byte))))
+       do (format t "~2X " byte))))
