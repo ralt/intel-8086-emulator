@@ -8,13 +8,11 @@
 
 (defmacro defopcode (opcode &body body)
   `(defmethod instruction ((opcode (eql ,@opcode)) bytes)
-     ,@body
-
-     ; Call the rest.
-     (instruction (first (rest bytes)) (rest bytes))))
+     ,@body))
 
 (defopcode (#x81)
-  (format t "WINNING"))
+  (format t "WINNING")
+  (instruction (first (rest bytes)) (rest bytes)))
 
 ;; Last method called.
 (defmethod instruction (opcode bytes)
