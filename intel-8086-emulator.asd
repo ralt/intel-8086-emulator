@@ -9,4 +9,5 @@
   :pathname "src/"
   :components ((:file "package")
                (:file "intel-8086-emulator")
-               (:file "disassembler")))
+               (:file "disassembler")
+               (:file "opcodes")))
