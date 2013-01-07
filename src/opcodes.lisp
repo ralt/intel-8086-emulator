@@ -2,16 +2,20 @@
 
 (in-package #:intel-8086-emulator)
 
-(defgeneric instruction (bytes &optional oc-extension)
+(defgeneric instruction (opcode bytes)
   (:documentation "Defines an opcode with its bytes and eventually
                   the 3 first bits of the r/m operand"))
 
-(defmacro defopcode (vars &body body)
-  `(dolist (definition ,vars)
-     (let ((byte (first definition))
-           (oc-extension (getf 'definition :oc-extension)))
-       (defmethod instruction (byte &optional oc-extension)
-         ,@body))))
+(defmacro defopcode (opcode &body body)
+  `(defmethod instruction ((opcode (eql ,@opcode)) bytes)
+     ,@body
 
-(defopcode (#xfc)
-  ())
+     ; Call the rest.
+     (instruction (first (rest bytes)) (rest bytes))))
+
+(defopcode (#x81)
+  (format t "WINNING"))
+
+;; Last method called.
+(defmethod instruction (opcode bytes)
+  (format t "END"))

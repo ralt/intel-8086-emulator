@@ -10,4 +10,5 @@
       (loop for byte = (read-byte stream nil :eof)
          until (eq byte :eof)
          do (setf bytes (append (list byte) bytes))))
-    bytes))
+    (setf bytes (reverse bytes))
+    (instruction (first bytes) bytes)))
