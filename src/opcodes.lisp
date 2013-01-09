@@ -6,11 +6,11 @@
   (:documentation "Defines an opcode with its bytes and eventually
                   the 3 first bits of the r/m operand"))
 
-(defmacro defopcode (opcode &body body)
-  `(defmethod instruction ((opcode (eql ,@opcode)) bytes)
+(defmacro defopcode (byte (opcode bytes) &body body)
+  `(defmethod instruction ((,opcode (eql ,byte)) ,bytes)
      ,@body))
 
-(defopcode (#x81)
+(defopcode #x81 (opcode bytes)
   (format t "WINNING")
   (instruction (first (rest bytes)) (rest bytes)))
 
