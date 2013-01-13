@@ -12,13 +12,14 @@
   `(defmethod instruction ((,opcode (eql ,byte)) ,bytes)
      ,@body))
 
+;;; Called after every instruction.
 (defun next (bytes)
   (instruction (first (rest bytes)) (rest bytes)))
 
 (defopcode #x81 (opcode bytes)
   (instruction #x81fc bytes))
 
-;; CMP
+;;; CMP
 (defopcode #x81fc (opcode bytes)
   (format t "cmp~%")
   (next bytes))
