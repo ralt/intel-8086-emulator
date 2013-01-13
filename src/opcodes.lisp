@@ -12,9 +12,16 @@
   `(defmethod instruction ((,opcode (eql ,byte)) ,bytes)
      ,@body))
 
-(defopcode #x81 (opcode bytes)
-  (format t "WINNING")
+(defun next (bytes)
   (instruction (first (rest bytes)) (rest bytes)))
+
+(defopcode #x81 (opcode bytes)
+  (instruction #x81fc bytes))
+
+;; CMP
+(defopcode #x81fc (opcode bytes)
+  (format t "cmp~%")
+  (next bytes))
 
 ;;; Last method called.
 (defmethod instruction (opcode bytes)
