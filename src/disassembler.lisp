@@ -1,4 +1,6 @@
-;; Hacks and glory awaits!
+;;;; Hacks and glory awaits!
+
+;;;; Disassembling the binary input file.
 
 (in-package #:intel-8086-emulator)
 
