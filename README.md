@@ -17,7 +17,7 @@ Build
 Contributors
 ---
 
-- [Florian Margaine](http://margaine.com}
+- [Florian Margaine](http://margaine.com)
 
 License
 ---
