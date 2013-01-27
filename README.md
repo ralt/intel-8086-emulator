@@ -8,6 +8,12 @@ Emulating an Intel 8086 CPU.
 
 This project is an attempt to solve [this challenge][0] in Common Lisp.
 
+Build
+---
+
+    make
+    ./build/intel-ndisasm
+
 Contributors
 ---
 
