@@ -6,6 +6,7 @@
 
 (defun ndisasm ()
   (let ((bytes (collect)))
+    ;; Not the same as (next bytes).
     (instruction (first bytes) bytes)))
 
 (defun collect ()
