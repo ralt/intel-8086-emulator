@@ -9,6 +9,7 @@
   (:documentation "Defines an opcode with its bytes"))
 
 (defmacro defopcode (byte (opcode bytes) &body body)
+  "Defines an opcode with its byte."
   `(defmethod instruction ((,opcode (eql ,byte)) ,bytes)
      ,@body))
 
